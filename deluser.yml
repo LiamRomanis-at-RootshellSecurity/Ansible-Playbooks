@@ -1,0 +1,19 @@
+---
+  - hosts: kali
+    vars_prompt:
+
+    - name: username
+      prompt: username?
+      private: no
+
+    tasks:
+ 
+    - name: Print msg
+      ansible.builtin.debug:
+         msg: "Removing user:  {{ username }}"
+
+    - name: Del User
+      ansible.builtin.user: 
+       name: "{{ username }}"
+       state: absent
+       remove: yes
