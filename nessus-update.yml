@@ -1,0 +1,10 @@
+---
+  - name: Check the remote host Hostname, Version, Distribution with UNAME
+    hosts: kali
+    tasks:
+      - name: Execute the NESSUS Update command
+        register: nessupdate
+        command: "/opt/nessus/sbin/nessuscli update --all"
+
+      - debug:
+          var: nessupdate.stdout_lines
